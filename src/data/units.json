@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "slug": "introduction-to-java",
+    "title": "Introduction to Java",
+    "description": "The Creation of Java, Java Buzzwords, JVM, JRE, JDK architecture, Bytecode, Platform independence, Writing and running Java programs, OOP principles.",
+    "estimatedHours": 5,
+    "difficulty": "Beginner",
+    "icon": "Coffee",
+    "color": "#f59e0b",
+    "questionCount": 0,
+    "topics": 8
+  },
+  {
+    "id": 2,
+    "slug": "fundamental-programming-structures",
+    "title": "Fundamental Programming Structures",
+    "description": "Comments, primitive data types, variables, constants, type conversion, casting, operators, control statements, loops, arrays, BigInteger, BigDecimal.",
+    "estimatedHours": 6,
+    "difficulty": "Beginner",
+    "icon": "Code2",
+    "color": "#3b82f6",
+    "questionCount": 0,
+    "topics": 12
+  },
+  {
+    "id": 3,
+    "slug": "classes-and-objects",
+    "title": "Classes and Objects",
+    "description": "OOP principles, defining classes, creating objects, methods, constructors, this keyword, access control, static members, final keyword, Object class, nested classes, garbage collection, packages.",
+    "estimatedHours": 8,
+    "difficulty": "Intermediate",
+    "icon": "Box",
+    "color": "#8b5cf6",
+    "questionCount": 0,
+    "topics": 14
+  },
+  {
+    "id": 4,
+    "slug": "inheritance-and-interfaces",
+    "title": "Inheritance and Interfaces",
+    "description": "Inheritance basics, super keyword, method overriding, dynamic method dispatch, abstract classes, interfaces, default and static methods, functional interfaces, sealed classes.",
+    "estimatedHours": 7,
+    "difficulty": "Intermediate",
+    "icon": "GitBranch",
+    "color": "#ec4899",
+    "questionCount": 0,
+    "topics": 10
+  },
+  {
+    "id": 5,
+    "slug": "exception-handling",
+    "title": "Exception Handling",
+    "description": "Exception hierarchy, checked vs unchecked exceptions, try-catch-finally, multiple catch, multi-catch, try-with-resources, throw, throws, custom exceptions.",
+    "estimatedHours": 4,
+    "difficulty": "Intermediate",
+    "icon": "AlertTriangle",
+    "color": "#ef4444",
+    "questionCount": 0,
+    "topics": 10
+  },
+  {
+    "id": 6,
+    "slug": "generics-and-collections",
+    "title": "Generics and Collections",
+    "description": "Generic classes and methods, bounded wildcards, type erasure, Collections Framework (List, Set, Map, Queue), Iterators, wrapper classes, autoboxing and unboxing.",
+    "estimatedHours": 5,
+    "difficulty": "Intermediate",
+    "icon": "Database",
+    "color": "#06b6d4",
+    "questionCount": 0,
+    "topics": 10
+  },
+  {
+    "id": 7,
+    "slug": "multithreaded-programming",
+    "title": "Multithreaded Programming",
+    "description": "Thread model, Thread class, Runnable interface, creating threads, isAlive(), join(), thread priorities, synchronization, race conditions.",
+    "estimatedHours": 5,
+    "difficulty": "Advanced",
+    "icon": "Zap",
+    "color": "#f97316",
+    "questionCount": 0,
+    "topics": 8
+  },
+  {
+    "id": 8,
+    "slug": "essential-java-classes",
+    "title": "Essential Java Classes",
+    "description": "String class, StringBuffer, StringBuilder, Math class, wrapper classes, introduction to Lambda Expressions and Stream API.",
+    "estimatedHours": 3,
+    "difficulty": "Intermediate",
+    "icon": "Type",
+    "color": "#14b8a6",
+    "questionCount": 0,
+    "topics": 7
+  },
+  {
+    "id": 9,
+    "slug": "file-handling",
+    "title": "File Handling",
+    "description": "File class, byte streams, character streams, BufferedReader, BufferedWriter, PrintWriter, RandomAccessFile, serialization, NIO.2 API, Console class.",
+    "estimatedHours": 5,
+    "difficulty": "Advanced",
+    "icon": "File",
+    "color": "#6366f1",
+    "questionCount": 0,
+    "topics": 10
+  }
+]

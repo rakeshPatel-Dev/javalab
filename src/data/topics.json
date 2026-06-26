@@ -1,0 +1,541 @@
+[
+  {
+    "id": 1,
+    "unitId": 1,
+    "title": "History and Creation of Java",
+    "slug": "history-and-creation-of-java",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 2,
+    "unitId": 1,
+    "title": "Java Buzzwords",
+    "slug": "java-buzzwords",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 3,
+    "unitId": 1,
+    "title": "JVM, JRE, JDK Architecture",
+    "slug": "jvm-jre-jdk-architecture",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 4,
+    "unitId": 1,
+    "title": "Bytecode and Platform Independence",
+    "slug": "bytecode-and-platform-independence",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 5,
+    "unitId": 1,
+    "title": "Writing, Compiling, Running Java Programs",
+    "slug": "writing-compiling-running-java-programs",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 6,
+    "unitId": 1,
+    "title": "Command Line Arguments",
+    "slug": "command-line-arguments",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 7,
+    "unitId": 1,
+    "title": "Scanner Class and System.out",
+    "slug": "scanner-class-and-system-out",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 8,
+    "unitId": 1,
+    "title": "OOP Principles Overview",
+    "slug": "oop-principles-overview",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 9,
+    "unitId": 2,
+    "title": "Comments and Data Types",
+    "slug": "comments-and-data-types",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 10,
+    "unitId": 2,
+    "title": "Variables, Constants, Type Conversion",
+    "slug": "variables-constants-type-conversion",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 11,
+    "unitId": 2,
+    "title": "Operators and Precedence",
+    "slug": "operators-and-precedence",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 12,
+    "unitId": 2,
+    "title": "Control Statements (if, switch)",
+    "slug": "control-statements-if-switch",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 13,
+    "unitId": 2,
+    "title": "Loops (for, while, do-while, enhanced for)",
+    "slug": "loops-for-while-do-while-enhanced-for",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 14,
+    "unitId": 2,
+    "title": "Jump Statements (break, continue, return)",
+    "slug": "jump-statements-break-continue-return",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 15,
+    "unitId": 2,
+    "title": "BigInteger and BigDecimal",
+    "slug": "biginteger-and-bigdecimal",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 16,
+    "unitId": 2,
+    "title": "Arrays (1D and 2D)",
+    "slug": "arrays-1d-and-2d",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 17,
+    "unitId": 2,
+    "title": "Passing Arrays to Methods",
+    "slug": "passing-arrays-to-methods",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 18,
+    "unitId": 3,
+    "title": "Defining Classes and Objects",
+    "slug": "defining-classes-and-objects",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 19,
+    "unitId": 3,
+    "title": "Methods and Method Overloading",
+    "slug": "methods-and-method-overloading",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 20,
+    "unitId": 3,
+    "title": "Constructors and Constructor Overloading",
+    "slug": "constructors-and-constructor-overloading",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 21,
+    "unitId": 3,
+    "title": "this Keyword",
+    "slug": "this-keyword",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 22,
+    "unitId": 3,
+    "title": "Variable Length Arguments (varargs)",
+    "slug": "variable-length-arguments-varargs",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 23,
+    "unitId": 3,
+    "title": "Access Control (public, private, protected, default)",
+    "slug": "access-control-public-private-protected-default",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 24,
+    "unitId": 3,
+    "title": "Static Members",
+    "slug": "static-members",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 25,
+    "unitId": 3,
+    "title": "final Keyword",
+    "slug": "final-keyword",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 26,
+    "unitId": 3,
+    "title": "Object Class and Garbage Collection",
+    "slug": "object-class-and-garbage-collection",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 27,
+    "unitId": 3,
+    "title": "Nested and Inner Classes",
+    "slug": "nested-and-inner-classes",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 28,
+    "unitId": 3,
+    "title": "Packages and import statements",
+    "slug": "packages-and-import-statements",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 29,
+    "unitId": 4,
+    "title": "Inheritance Basics (extends, IS-A)",
+    "slug": "inheritance-basics-extends-is-a",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 30,
+    "unitId": 4,
+    "title": "super Keyword",
+    "slug": "super-keyword",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 31,
+    "unitId": 4,
+    "title": "Method Overriding and @Override",
+    "slug": "method-overriding-and-override",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 32,
+    "unitId": 4,
+    "title": "Dynamic Method Dispatch (Runtime Polymorphism)",
+    "slug": "dynamic-method-dispatch-runtime-polymorphism",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 33,
+    "unitId": 4,
+    "title": "Abstract Classes",
+    "slug": "abstract-classes",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 34,
+    "unitId": 4,
+    "title": "Interfaces (defining, implementing, extending)",
+    "slug": "interfaces-defining-implementing-extending",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 35,
+    "unitId": 4,
+    "title": "Default and Static Methods in Interfaces",
+    "slug": "default-and-static-methods-in-interfaces",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 36,
+    "unitId": 4,
+    "title": "Functional Interfaces",
+    "slug": "functional-interfaces",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 37,
+    "unitId": 4,
+    "title": "Sealed Classes",
+    "slug": "sealed-classes",
+    "estimatedQuestions": 4
+  },
+  {
+    "id": 38,
+    "unitId": 4,
+    "title": "Liskov Substitution Principle",
+    "slug": "liskov-substitution-principle",
+    "estimatedQuestions": 4
+  },
+  {
+    "id": 39,
+    "unitId": 5,
+    "title": "Exception Hierarchy (Throwable, Error, Exception)",
+    "slug": "exception-hierarchy-throwable-error-exception",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 40,
+    "unitId": 5,
+    "title": "Checked vs Unchecked Exceptions",
+    "slug": "checked-vs-unchecked-exceptions",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 41,
+    "unitId": 5,
+    "title": "try, catch, finally Blocks",
+    "slug": "try-catch-finally-blocks",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 42,
+    "unitId": 5,
+    "title": "Multiple Catch and Multi-catch",
+    "slug": "multiple-catch-and-multi-catch",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 43,
+    "unitId": 5,
+    "title": "Nested try Statements",
+    "slug": "nested-try-statements",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 44,
+    "unitId": 5,
+    "title": "try-with-resources",
+    "slug": "try-with-resources",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 45,
+    "unitId": 5,
+    "title": "throw and throws Keywords",
+    "slug": "throw-and-throws-keywords",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 46,
+    "unitId": 5,
+    "title": "Custom Exceptions",
+    "slug": "custom-exceptions",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 47,
+    "unitId": 5,
+    "title": "Exception Chaining",
+    "slug": "exception-chaining",
+    "estimatedQuestions": 4
+  },
+  {
+    "id": 48,
+    "unitId": 6,
+    "title": "Generic Classes and Methods",
+    "slug": "generic-classes-and-methods",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 49,
+    "unitId": 6,
+    "title": "Bounded Wildcards",
+    "slug": "bounded-wildcards",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 50,
+    "unitId": 6,
+    "title": "Type Erasure",
+    "slug": "type-erasure",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 51,
+    "unitId": 6,
+    "title": "Collections Framework (List, Set, Map, Queue)",
+    "slug": "collections-framework-list-set-map-queue",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 52,
+    "unitId": 6,
+    "title": "Iterators and Iterable Interface",
+    "slug": "iterators-and-iterable-interface",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 53,
+    "unitId": 6,
+    "title": "Enhanced for Loop with Collections",
+    "slug": "enhanced-for-loop-with-collections",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 54,
+    "unitId": 6,
+    "title": "Wrapper Classes",
+    "slug": "wrapper-classes",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 55,
+    "unitId": 6,
+    "title": "Autoboxing and Unboxing",
+    "slug": "autoboxing-and-unboxing",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 56,
+    "unitId": 7,
+    "title": "Thread Model and Thread Lifecycle",
+    "slug": "thread-model-and-thread-lifecycle",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 57,
+    "unitId": 7,
+    "title": "Thread Class and Runnable Interface",
+    "slug": "thread-class-and-runnable-interface",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 58,
+    "unitId": 7,
+    "title": "Creating Threads (extending Thread, implementing Runnable)",
+    "slug": "creating-threads-extending-thread-implementing-runnable",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 59,
+    "unitId": 7,
+    "title": "isAlive() and join() Methods",
+    "slug": "isalive-and-join-methods",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 60,
+    "unitId": 7,
+    "title": "Thread Priorities",
+    "slug": "thread-priorities",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 61,
+    "unitId": 7,
+    "title": "Synchronization (synchronized methods and statements)",
+    "slug": "synchronization-synchronized-methods-and-statements",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 62,
+    "unitId": 7,
+    "title": "Race Conditions",
+    "slug": "race-conditions",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 63,
+    "unitId": 8,
+    "title": "String Class and Methods",
+    "slug": "string-class-and-methods",
+    "estimatedQuestions": 10
+  },
+  {
+    "id": 64,
+    "unitId": 8,
+    "title": "StringBuffer and StringBuilder",
+    "slug": "stringbuffer-and-stringbuilder",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 65,
+    "unitId": 8,
+    "title": "Math Class",
+    "slug": "math-class",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 66,
+    "unitId": 8,
+    "title": "Primitive Type Wrappers",
+    "slug": "primitive-type-wrappers",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 67,
+    "unitId": 8,
+    "title": "Lambda Expressions Introduction",
+    "slug": "lambda-expressions-introduction",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 68,
+    "unitId": 8,
+    "title": "Stream API Overview",
+    "slug": "stream-api-overview",
+    "estimatedQuestions": 4
+  },
+  {
+    "id": 69,
+    "unitId": 9,
+    "title": "File Class and File Operations",
+    "slug": "file-class-and-file-operations",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 70,
+    "unitId": 9,
+    "title": "Byte Streams (FileInputStream, FileOutputStream)",
+    "slug": "byte-streams-fileinputstream-fileoutputstream",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 71,
+    "unitId": 9,
+    "title": "Character Streams (FileReader, FileWriter)",
+    "slug": "character-streams-filereader-filewriter",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 72,
+    "unitId": 9,
+    "title": "BufferedReader and BufferedWriter",
+    "slug": "bufferedreader-and-bufferedwriter",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 73,
+    "unitId": 9,
+    "title": "PrintWriter",
+    "slug": "printwriter",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 74,
+    "unitId": 9,
+    "title": "RandomAccessFile",
+    "slug": "randomaccessfile",
+    "estimatedQuestions": 5
+  },
+  {
+    "id": 75,
+    "unitId": 9,
+    "title": "Serialization (Serializable, ObjectOutputStream, ObjectInputStream)",
+    "slug": "serialization-serializable-objectoutputstream-objectinputstream",
+    "estimatedQuestions": 8
+  },
+  {
+    "id": 76,
+    "unitId": 9,
+    "title": "NIO.2 API (Path, Files, Paths)",
+    "slug": "nio-2-api-path-files-paths",
+    "estimatedQuestions": 6
+  },
+  {
+    "id": 77,
+    "unitId": 9,
+    "title": "Console Class",
+    "slug": "console-class",
+    "estimatedQuestions": 4
+  }
+]
