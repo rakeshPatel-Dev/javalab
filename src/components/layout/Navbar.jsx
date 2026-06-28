@@ -183,7 +183,7 @@ export const Navbar = () => {
             <div className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-primary/5 border border-primary/10">
               <Zap className="w-4 h-4 text-primary" />
               <span className="text-[11px] font-semibold text-muted-foreground">
-                Study smarter with premium features
+                Study smarter with Pro features
               </span>
             </div>
           </div>
