@@ -1,15 +1,14 @@
-import  { useMemo } from 'react';
+import { useMemo } from 'react';
 import { getUnits, getGlobalStats } from '../utils/dataHelper';
 import { useTracking } from '../hooks/useTracking';
+import { SEO } from '../components/common/SEO';
 
-// Import section components
+// Section components
 import Hero from '../components/sections/home/Hero';
-
-import Difficulty from '../components/sections/home/Difficulty';
-import FeaturedUnits from '../components/sections/home/FeaturedUnits';
-import Features from '../components/sections/home/Features';
-import QuickAccess from '../components/sections/home/QuickAccess';
 import StatsGrid from '../components/sections/home/StatsGrid';
+import FeaturedUnits from '../components/sections/home/FeaturedUnits';
+import CTABento from '../components/sections/home/CTABento';
+import Features from '../components/sections/home/Features';
 
 export default function HomePage() {
   const units = useMemo(() => getUnits(), []);
@@ -20,33 +19,25 @@ export default function HomePage() {
   const featuredUnits = units.slice(0, 3);
 
   return (
-    <div className="min-h-screen max-w-6xl mx-auto bg-background">
-       {/* Grid pattern */}
-        <svg className="absolute inset-0 w-full h-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid)" />
-        </svg>
-      <Hero 
-        stats={stats}
-        overallProgress={overallProgress}
-      />
-      
+    <div className="min-h-screen bg-background">
+      <SEO />
+      <div aria-hidden="true" className="hero-grid" />
+
+      {/* 1. Hero — full-width centered, mesh-gradient */}
+      <Hero stats={stats} overallProgress={overallProgress} />
+
+      {/* 2. Stats Bar — simple text stats on white bg with border-y */}
       <StatsGrid stats={stats} />
-      
-      <Difficulty stats={stats} />
-      
-      <FeaturedUnits 
-        featuredUnits={featuredUnits}
-        getUnitProgress={getUnitProgress}
-      />
-      
+
+      {/* 3. Curriculum Units Grid — section heading + 3-col unit card grid */}
+      <FeaturedUnits featuredUnits={featuredUnits} getUnitProgress={getUnitProgress} />
+
+      {/* 6. Features — premium features section */}
       <Features />
-      
-      <QuickAccess />
+
+       {/* 5. CTA Bento — dark wide panel + blue community panel (from design) */}
+      <CTABento />
+
     </div>
   );
 }

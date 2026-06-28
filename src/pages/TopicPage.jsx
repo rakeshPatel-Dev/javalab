@@ -12,6 +12,7 @@ import { getTopicById, getUnitById, getQuestionsByTopicId } from '../utils/dataH
 import { useTracking } from '../hooks/useTracking';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
+import { SEO } from '../components/common/SEO';
 
 function sortQuestions(questions, sortBy) {
   const order = { Easy: 0, Medium: 1, Hard: 2 };
@@ -51,14 +52,15 @@ export default function TopicPage() {
 
   if (!topic) {
     return (
-      <div className="pt-20 pb-16 min-h-screen flex items-center justify-center">
+      <div className="pb-16 min-h-screen flex items-center justify-center">
         <EmptyState icon={BookOpen} title="Topic not found" />
       </div>
     );
   }
 
   return (
-    <div className="pt-20 pb-16 min-h-screen">
+    <div className="pb-16 min-h-screen">
+      <SEO title={topic.title} description={`${topic.title} — practice questions for ${unit?.title || 'Java OOP'}.`} />
       <Container className="py-8">
         {/* Breadcrumb */}
         <Breadcrumb items={[
@@ -99,7 +101,7 @@ export default function TopicPage() {
                 transition={{ duration: 0.25 }}
                 className="overflow-hidden"
               >
-                <Card className="mb-5 gap-0 py-0">
+                <Card className="mb-5 gap-0 py-0 rounded-3xl border border-border bg-card shadow-xs">
                   <CardContent className="p-4">
                     <FilterBar
                       selectedDifficulties={selectedDifficulties}

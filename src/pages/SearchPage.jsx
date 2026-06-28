@@ -11,6 +11,7 @@ import { useTracking } from '../hooks/useTracking';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
+import { SEO } from '../components/common/SEO';
 
 function sortQuestions(questions, sortBy) {
   const order = { Easy: 0, Medium: 1, Hard: 2 };
@@ -63,67 +64,57 @@ export default function SearchPage() {
   const hasFilters = selectedDifficulties.length > 0 || selectedTypes.length > 0 || sortBy !== 'default';
 
   return (
-    <div className="pt-20 pb-16 min-h-screen">
+    <div className="pb-16 min-h-screen">
+      <SEO title="Search" description="Search questions across all OOP with Java units, topics, and difficulty levels." />
       <Container className="py-8">
         {/* Header */}
         <div className="mb-8 text-center max-w-xl mx-auto">
-          <h1 className="text-2xl font-bold text-foreground mb-2">Search Questions</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-2xl sm:text-3xl font-black text-foreground mb-2">Search Questions</h1>
+          <p className="text-sm text-muted-foreground leading-relaxed">
             Search across{' '}
-            <Badge variant="secondary" className="font-semibold mx-0.5">
+            <Badge variant="secondary" className="font-bold mx-0.5 rounded-lg px-2 bg-primary/10 text-primary">
               {allQuestions.length}
             </Badge>{' '}
             Java OOP questions by title, keyword, tag, or type.
           </p>
         </div>
 
-        {/* Search input */}
-        <SearchBar
-          value={query}
-          onChange={setQuery}
-          placeholder="Search by title, keyword, tag, or type..."
-          autoFocus
-          className="max-w-2xl mx-auto"
-        />
-
-        {/* Filter Toggle */}
-        <div className="max-w-2xl mx-auto mt-4 flex items-center justify-between">
-          <span className="text-xs text-muted-foreground">
-            {hasSearch || hasFilters
-              ? `${filtered.length} result${filtered.length !== 1 ? 's' : ''} found`
-              : `${allQuestions.length} total questions`}
-          </span>
-          <Button
-            variant={filtersOpen || hasFilters ? 'secondary' : 'outline'}
-            size="sm"
-            onClick={() => setFiltersOpen(v => !v)}
-            className="gap-1.5"
-          >
-            <SlidersHorizontal className="w-3.5 h-3.5" />
-            {hasFilters ? 'Filters active' : 'Filters'}
-            {hasFilters && (
-              <span
-                onClick={(e) => { e.stopPropagation(); clearFilters(); }}
-                className="ml-0.5 hover:text-destructive transition-colors"
-              >
-                <X className="w-3 h-3" />
+        {/* 2-Column Desktop Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+          
+          {/* Desktop Sidebar Filters panel / Mobile Toggleable Filters Panel */}
+          <aside className="md:col-span-4 lg:col-span-3 sticky top-24 space-y-4">
+            {/* Filter Toggle for Mobile */}
+            <div className="flex md:hidden items-center justify-between p-1 bg-secondary rounded-2xl border border-border">
+              <span className="text-xs font-bold text-muted-foreground px-3">
+                {filtered.length} results
               </span>
-            )}
-          </Button>
-        </div>
+              <Button
+                variant={filtersOpen || hasFilters ? 'secondary' : 'outline'}
+                size="sm"
+                onClick={() => setFiltersOpen(v => !v)}
+                className="gap-1.5 rounded-xl cursor-pointer"
+              >
+                <SlidersHorizontal className="w-3.5 h-3.5" />
+                {hasFilters ? 'Filters Active' : 'Filters'}
+                {hasFilters && (
+                  <span
+                    onClick={(e) => { e.stopPropagation(); clearFilters(); }}
+                    className="ml-1 text-muted-foreground hover:text-destructive transition-colors"
+                  >
+                    <X className="w-3 h-3" />
+                  </span>
+                )}
+              </Button>
+            </div>
 
-        {/* Filters */}
-        <AnimatePresence>
-          {filtersOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25 }}
-              className="overflow-hidden max-w-2xl mx-auto"
-            >
-              <Card className="mt-3 gap-0 py-0">
-                <CardContent className="p-4">
+            {/* Filters panel (Always visible on desktop, toggleable on mobile) */}
+            <div className={`${filtersOpen ? 'block' : 'hidden md:block'} animate-in slide-in-from-top-4 duration-300`}>
+              <Card className="rounded-2xl border border-border bg-card shadow-xs gap-0 py-0">
+                <CardContent className="p-5">
+                  <h3 className="text-xs font-bold text-foreground uppercase tracking-wider mb-4">
+                    Refine Search
+                  </h3>
                   <FilterBar
                     selectedDifficulties={selectedDifficulties}
                     onDifficultyChange={toggleDifficulty}
@@ -135,39 +126,75 @@ export default function SearchPage() {
                   />
                 </CardContent>
               </Card>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Results */}
-        <div className="mt-8 max-w-2xl mx-auto">
-          {!hasSearch && !hasFilters ? (
-            <div className="text-center py-16 text-muted-foreground">
-              <SearchIcon className="w-12 h-12 mx-auto mb-3 opacity-30" />
-              <p className="text-sm">Type something to search questions</p>
             </div>
-          ) : filtered.length === 0 ? (
-            <EmptyState
-              icon={SearchIcon}
-              title="No questions found"
-              description={`No results for "${query}". Try a different keyword or adjust your filters.`}
-            />
-          ) : (
-            <motion.div className="space-y-3" layout>
-              <AnimatePresence mode="popLayout">
-                {filtered.map(question => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                    isBookmarked={isBookmarked(question.id)}
-                    onToggleBookmark={() => toggleBookmark(question.id)}
-                    isCompleted={isCompleted(question.id)}
-                    onToggleCompleted={() => toggleCompleted(question.id)}
-                  />
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          )}
+          </aside>
+
+          {/* Search Header + Results Column */}
+          <section className="md:col-span-8 lg:col-span-9 space-y-6">
+            {/* Search Input Box */}
+            <div className="relative w-full shadow-xs rounded-2xl">
+              <SearchBar
+                value={query}
+                onChange={setQuery}
+                placeholder="Search by title, keyword, tag, or type..."
+                autoFocus
+                className="w-full bg-card rounded-2xl"
+              />
+            </div>
+
+            {/* Results Header Status */}
+            <div className="hidden md:flex justify-between items-center px-1">
+              <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                {hasSearch || hasFilters
+                  ? `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''}`
+                  : `Showing all ${allQuestions.length} questions`}
+              </span>
+              {hasFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="text-xs font-bold text-primary hover:text-destructive transition-colors flex items-center gap-1 cursor-pointer"
+                >
+                  <X className="w-3 h-3" />
+                  Clear all filters
+                </button>
+              )}
+            </div>
+
+            {/* Results Grid / List */}
+            <div className="space-y-4">
+              {!hasSearch && !hasFilters ? (
+                <div className="text-center py-20 bg-card rounded-2xl border border-dashed border-border p-6 shadow-xs">
+                  <SearchIcon className="w-12 h-12 mx-auto mb-4 text-primary opacity-30 animate-pulse" />
+                  <h3 className="text-sm font-bold text-foreground mb-1">Start Searching</h3>
+                  <p className="text-xs text-muted-foreground max-w-xs mx-auto leading-relaxed">
+                    Type a keyword above or select filters on the left to browse the Java OOP question repository.
+                  </p>
+                </div>
+              ) : filtered.length === 0 ? (
+                <EmptyState
+                  icon={SearchIcon}
+                  title="No questions found"
+                  description={`We couldn't find any results matching "${query}". Try adjusting your filters or spelling.`}
+                />
+              ) : (
+                <motion.div className="space-y-4" layout>
+                  <AnimatePresence mode="popLayout">
+                    {filtered.map(question => (
+                      <QuestionCard
+                        key={question.id}
+                        question={question}
+                        isBookmarked={isBookmarked(question.id)}
+                        onToggleBookmark={() => toggleBookmark(question.id)}
+                        isCompleted={isCompleted(question.id)}
+                        onToggleCompleted={() => toggleCompleted(question.id)}
+                      />
+                    ))}
+                  </AnimatePresence>
+                </motion.div>
+              )}
+            </div>
+          </section>
+
         </div>
       </Container>
     </div>

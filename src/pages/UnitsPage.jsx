@@ -1,22 +1,24 @@
-import React, { useMemo } from 'react';
+import  { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Container from '../components/common/Container';
 import PageHeader from '../components/common/PageHeader';
 import UnitCard from '../components/units/UnitCard';
 import { getUnits } from '../utils/dataHelper';
 import { useTracking } from '../hooks/useTracking';
+import { SEO } from '../components/common/SEO';
 
 export default function UnitsPage() {
   const units = useMemo(() => getUnits(), []);
   const { getUnitProgress } = useTracking();
 
   return (
-    <div className="pt-20 pb-16 min-h-screen">
+    <div className="pb-16 min-h-screen">
+      <SEO title="All Units" description="Browse all OOP with Java curriculum units based on Syllabus." />
       <Container className="py-8">
         <PageHeader
           title="All Units"
           badge="Java OOP"
-          description={`${units.length} units covering the complete BCA 2nd semester Java OOP syllabus.`}
+          description={`${units.length} units covering the complete BITM 2nd semester Java OOP syllabus.`}
         />
 
         <motion.div
