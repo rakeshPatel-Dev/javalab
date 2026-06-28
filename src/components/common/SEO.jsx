@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'JavaLab';
-const SITE_URL = 'https://javalab.app';
+const SITE_URL = 'https://javalabapp.vercel.app';
 const OG_IMAGE = `${SITE_URL}/Javalab-whatsapp-og.png`;
 
 export const SEO = ({
