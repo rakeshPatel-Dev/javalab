@@ -1,170 +1,183 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { 
-  Crown, Sparkles, Rocket, Search, 
-  Database, Target, Clock,
-} from 'lucide-react';
+import { Sparkles, Rocket, BookOpen } from 'lucide-react';
 
 const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0, y: 24 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay, ease: [0.16, 1, 0.3, 1] }
+  transition: { duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] }
 });
 
-const scaleIn = (delay = 0) => ({
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }
+const float = (delay = 0, distance = 12, duration = 5) => ({
+  initial: { y: 0 },
+  animate: {
+    y: [0, -distance, 0],
+    transition: {
+      duration,
+      delay,
+      repeat: Infinity,
+      ease: 'easeInOut'
+    }
+  }
 });
 
-export default function Hero({ stats, overallProgress }) {
-  const completionRate = Math.round((overallProgress.completed / overallProgress.total) * 100);
+const DistributionCard = ({ label, value, total, color, ringColor, delay, distance, duration, position, className }) => (
+  <motion.div
+    {...float(delay, distance, duration)}
+    className={`absolute ${position} z-20 hidden md:flex items-center gap-3 px-4 py-3 rounded-2xl bg-background/55 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] ${className}`}
+    style={{ WebkitBackdropFilter: 'blur(16px)' }}
+  >
+    <div className={`relative w-10 h-10 rounded-full flex items-center justify-center ${color}`}>
+      <svg className="absolute inset-0" viewBox="0 0 36 36">
+        <circle
+          cx="18" cy="18" r="15"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          className="text-border/40"
+        />
+        <motion.circle
+          cx="18" cy="18" r="15"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray={`${(value / total) * 94.25} 94.25`}
+          transform="rotate(-90 18 18)"
+          className={ringColor}
+          initial={{ strokeDasharray: '0 94.25' }}
+          animate={{ strokeDasharray: `${(value / total) * 94.25} 94.25` }}
+          transition={{ duration: 1.2, delay: delay + 0.3, ease: 'easeOut' }}
+        />
+      </svg>
+      <span className="relative text-xs font-black">{value}</span>
+    </div>
+    <div className="flex flex-col">
+      <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{label}</span>
+      <span className="text-sm font-black text-foreground leading-tight">{value} Qs</span>
+    </div>
+  </motion.div>
+);
+
+export default function Hero({ stats , overallProgress }) {
+  const total = Math.max(stats.totalQuestions, 1);
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-24">
-      {/* Background decorations */}
-      <div className="absolute inset-0">
-        {/* <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_top_right,_rgba(59,130,246,0.08)_0%,_transparent_70%)]" />
-        <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(59,130,246,0.05)_0%,_transparent_70%)]" /> */}
-        
-       
+    <section className="relative overflow-hidden py-24 lg:py-25 px-4 sm:px-6 lg:px-8">
 
-      </div>
+      {/* Animated Background Elements */}
+      <div className="absolute top-10 right-[10%] w-32 h-32 bg-primary/10 rounded-2xl floating-shape blur-xl pointer-events-none" />
+      <div className="absolute bottom-10 left-[5%] w-48 h-48 bg-secondary/20 rounded-full floating-shape blur-2xl pointer-events-none" style={{ animationDelay: '-2s' }} />
+      <div className="absolute top-1/2 left-[20%] w-16 h-16 bg-accent/20 rounded-xl floating-shape blur-lg pointer-events-none" style={{ animationDelay: '-4s' }} />
 
-      <div className="relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left content */}
-          <motion.div {...fadeUp(0)}>
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-              <Crown className="w-4 h-4 text-primary" />
-              <span className="text-xs font-semibold text-primary/95 uppercase tracking-[0.15em]">
-                BCA 2nd Semester · Premium
-              </span>
-              <Sparkles className="w-3 h-3 text-primary" />
-            </div>
+      {/* Floating Question Distribution Cards */}
+      <DistributionCard
+        label="Easy"
+        value={stats.difficulty.easy}
+        total={total}
+        color="bg-emerald-500/15 text-emerald-600 dark:text-emerald-400"
+        ringColor="text-emerald-500"
+        delay={0.2}
+        distance={10}
+        duration={5}
+        position="top-[18%] left-[10%] lg:left-[16%]"
+        className="-rotate-10"
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-[1.1] tracking-tight">
-              Master
-              <span className="block text-transparent bg-clip-text bg-linear-to-r italic from-blue-400 via-cyan-400 to-blue-400 mt-2">
-                Java OOP
-              </span>
-            </h1>
+      />
+      <DistributionCard
+        label="Medium"
+        value={stats.difficulty.medium}
+        total={total}
+        color="bg-amber-500/15 text-amber-600 dark:text-amber-400"
+        ringColor="text-amber-500"
+        delay={0.6}
+        distance={14}
+        duration={6}
+        position="top-[28%] right-[5%] lg:right-[13%]"
+        className="rotate-10"
+      />
+      <DistributionCard
+        label="Hard"
+        value={stats.difficulty.hard}
+        total={total}
+        color="bg-rose-500/15 text-rose-600 dark:text-rose-400"
+        ringColor="text-rose-500"
+        delay={1.0}
+        distance={9}
+        duration={4.5}
+        position="bottom-[22%] left-[8%] lg:left-[16%]"
+        className="rotate-10"
+      />
+      <DistributionCard
+        label="Total"
+        value={stats.totalQuestions}
+        total={total}
+        color="bg-primary/15 text-primary"
+        ringColor="text-primary"
+        delay={1.4}
+        distance={11}
+        duration={5.5}
+        position="bottom-[20%] right-[6%] lg:right-[13%]"
+        className="-rotate-10"
+      />
 
-            <p className="mt-6 text-lg text-slate-300 leading-relaxed max-w-lg">
-              Comprehensive question bank with intelligent study tools, 
-              progress tracking, and personalized learning paths.
-            </p>
+      <div className="max-w-4xl mx-auto text-center relative z-10">
+        {/* Pill Badge */}
+        <motion.div {...fadeUp(0)} className="flex justify-center mb-8">
+          <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-primary/20 px-4 py-1.5 rounded-full shadow-xs">
+            <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse" />
+            <span className="text-xs font-bold text-primary uppercase tracking-wider">
+              BITM 2nd Semester · Java OOP
+            </span>
+            <Sparkles className="w-3 h-3 text-primary" />
+          </div>
+        </motion.div>
 
-            <div className="flex flex-wrap gap-4 mt-10">
-              <Link
-                to="/units"
-                className="group relative px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40"
-              >
-                <span className="flex items-center gap-2">
-                  Start Learning
-                  <Rocket className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </span>
-              </Link>
-              <Link
-                to="/search"
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-slate-200 font-medium rounded-xl border border-white/20 hover:bg-white/20 transition-all duration-300"
-              >
-                <span className="flex items-center gap-2">
-                  <Search className="w-4 h-4" />
-                  Search Questions
-                </span>
-              </Link>
-            </div>
+        {/* Main heading */}
+        <motion.h1
+          {...fadeUp(0.08)}
+          className="text-5xl sm:text-6xl lg:text-7xl font-black text-foreground leading-[1.1] tracking-tight mb-6"
+        >
+          Master{' '}
+          <img
+            src="/image/opps.png"
+            alt="OOPs"
+            className="inline-block h-10 sm:h-20 lg:h-40 opps-waggle w-auto object-contain align-middle -mt-1 sm:-mt-2"
+          />{' '}
+          W/ Java.{' '}
+          <br />
+          <span className="text-primary italic">One Question at a Time.</span>
+        </motion.h1>
 
-            {/* Feature badges */}
-            <div className="flex flex-wrap gap-6 mt-12">
-              {[
-                { icon: Database, label: '260+ Questions' },
-                { icon: Target, label: '9 Units' },
-                { icon: Clock, label: 'Smart Review' }
-              ].map(({ icon: Icon, label }) => (
-                <div key={label} className="flex items-center gap-2 text-slate-400 text-sm">
-                  <Icon className="w-4 h-4 text-blue-400" />
-                  <span>{label}</span>
-                </div>
-              ))}
-            </div>
-          </motion.div>
+        {/* Subtitle */}
+        <motion.p
+          {...fadeUp(0.16)}
+          className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          Java OOP study companion: practice theory, coding, and interview questions with syllabus organization and revision tracking.
 
-          {/* Right content - Premium stats grid */}
-          <motion.div {...scaleIn(0.1)} className="relative">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold text-white">{stats.totalUnits}</div>
-                <div className="text-sm text-slate-400 mt-1">Units</div>
-                <div className="mt-3 h-1 w-12 bg-blue-500 rounded-full" />
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold text-white">{stats.totalQuestions}</div>
-                <div className="text-sm text-slate-400 mt-1">Questions</div>
-                <div className="mt-3 h-1 w-12 bg-cyan-500 rounded-full" />
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold text-white">{stats.totalTopics}</div>
-                <div className="text-sm text-slate-400 mt-1">Topics</div>
-                <div className="mt-3 h-1 w-12 bg-emerald-500 rounded-full" />
-              </div>
-              <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <div className="text-3xl font-bold text-white">1.2k</div>
-                <div className="text-sm text-slate-400 mt-1">Students</div>
-                <div className="mt-3 h-1 w-12 bg-amber-500 rounded-full" />
-              </div>
-            </div>
+        </motion.p>
 
-            {/* Progress ring */}
-            {overallProgress.completed > 0 && (
-              <div className="mt-6 bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-16 h-16">
-                    <svg className="w-16 h-16 -rotate-90">
-                      <circle
-                        cx="32"
-                        cy="32"
-                        r="28"
-                        stroke="white"
-                        strokeWidth="4"
-                        fill="none"
-                        opacity="0.1"
-                      />
-                      <circle
-                        cx="32"
-                        cy="32"
-                        r="28"
-                        stroke="url(#progress)"
-                        strokeWidth="4"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeDasharray={175.93}
-                        strokeDashoffset={175.93 * (1 - completionRate / 100)}
-                        className="transition-all duration-1000"
-                      />
-                      <defs>
-                        <linearGradient id="progress" x1="0%" y1="0%" x2="100%" y2="0%">
-                          <stop offset="0%" stopColor="#3B82F6" />
-                          <stop offset="100%" stopColor="#06B6D4" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-xs font-bold text-white">{completionRate}%</span>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="text-sm font-medium text-white">Learning Progress</div>
-                    <div className="text-xs text-slate-400 mt-0.5">
-                      {overallProgress.completed} of {overallProgress.total} mastered
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </motion.div>
-        </div>
+        {/* CTA Buttons */}
+        <motion.div
+          {...fadeUp(0.22)}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3"
+        >
+          <Link
+            to="/units"
+            className="w-full sm:w-auto px-8 py-3.5 bg-primary text-primary-foreground rounded-xl font-bold shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:brightness-105 transition-all text-sm flex items-center justify-center gap-2"
+          >
+            Start Learning
+            <Rocket className="w-4 h-4" />
+          </Link>
+          <Link
+            to="/units"
+            className="w-full sm:w-auto px-8 py-3.5 bg-background/90 text-primary border border-border rounded-xl font-bold hover:bg-secondary hover:border-primary/30 transition-all text-sm flex items-center justify-center gap-2 shadow-xs"
+          >
+            <BookOpen className="w-4 h-4" />
+            {overallProgress.percentage > 0 ? 'Continue Learning' : 'Browse Units'}
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
