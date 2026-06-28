@@ -11,9 +11,9 @@ import BookmarksPage from './pages/BookmarksPage';
 import AboutPage from './pages/AboutPage';
 
 const Layout = ({ children }) => (
-  <div className="flex flex-col min-h-screen ">
+  <div className="flex flex-col min-h-screen bg-background">
     <Navbar />
-    <main className="flex-1 pt-14 px-4 sm:px-6 lg:px-8">
+    <main className="flex-1 px-3 sm:px-5 lg:px-8">
       {children}
     </main>
     <Footer />
