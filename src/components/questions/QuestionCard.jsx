@@ -41,10 +41,10 @@ export const QuestionCard = ({
       transition={{ duration: 0.22 }}
     >
       <Card
-        className={`group relative overflow-hidden transition-all duration-200 gap-0 py-0 ${
+        className={`group relative overflow-hidden transition-all duration-300 rounded-2xl gap-0 py-0 ${
           isCompleted
-            ? 'border-emerald-200/60 dark:border-emerald-900/30 bg-emerald-50/30 dark:bg-emerald-900/5'
-            : 'border-border/60 hover:border-border hover:shadow-md'
+            ? 'border-emerald-200/60 dark:border-emerald-900/30 bg-emerald-50/30 dark:bg-emerald-900/5 hover:shadow-md'
+            : 'border-border/60 hover:border-primary/20 hover:shadow-md'
         }`}
       >
         {/* Completion strip */}

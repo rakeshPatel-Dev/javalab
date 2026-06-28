@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, ChevronRight, BarChart2, BookOpen } from 'lucide-react';
 import Icon from '../common/Icon';
-import { Card, CardContent, CardFooter } from '../ui/card';
+import { Card, CardContent } from '../ui/card';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 
@@ -18,88 +18,80 @@ export const UnitCard = ({ unit, progress }) => {
 
   return (
     <motion.div
-      whileHover={{ y: -2 }}
-      transition={{ duration: 0.2 }}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
+      className="h-full"
     >
-      <Card className="group relative overflow-hidden border-border/60 hover:border-border hover:shadow-lg transition-all duration-300 gap-0 py-0">
-        {/* Color accent strip */}
-        <div
-          className="h-0.5 w-full opacity-80 flex-shrink-0"
-          style={{ background: unit.color }}
-        />
+      <Card className="group relative overflow-hidden border border-border bg-card rounded-2xl shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col h-full gap-0 py-0">
+        {/* Background Watermark Icon */}
+        <div className="absolute top-0 right-0 p-6 opacity-[0.04] dark:opacity-[0.08] group-hover:scale-105 transition-transform duration-300 pointer-events-none">
+          <Icon name={unit.icon} className="w-20 h-20 text-foreground" />
+        </div>
 
-        <CardContent className="p-6 pb-4">
-          {/* Header: icon + unit number */}
-          <div className="flex items-start justify-between mb-4">
-            <div
-              className="w-11 h-11 rounded-xl flex items-center justify-center shadow-sm"
-              style={{ background: `${unit.color}18` }}
-            >
-              <Icon name={unit.icon} className="w-5 h-5" style={{ color: unit.color }} />
-            </div>
-            <span className="text-xs text-muted-foreground font-mono font-semibold">
+        <CardContent className="p-6 flex flex-col flex-1">
+          {/* Header Badge */}
+          <div className="mb-4">
+            <span className="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-xl uppercase">
               Unit {unit.id}
             </span>
           </div>
 
-          {/* Title + description */}
-          <h2 className="text-base font-bold text-foreground leading-snug mb-1.5 group-hover:text-primary transition-colors duration-150">
+          {/* Title & Description */}
+          <h3 className="text-lg font-bold text-foreground leading-snug mb-2 group-hover:text-primary transition-colors duration-150">
             {unit.title}
-          </h2>
-          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-4">
+          </h3>
+          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 mb-6 flex-grow">
             {unit.description}
           </p>
 
-          {/* Stats row */}
-          <div className="flex flex-wrap gap-3 mb-4 text-xs text-muted-foreground">
+          {/* Stats Row */}
+          <div className="flex flex-wrap items-center gap-3 mb-6 text-xs text-muted-foreground">
             <span className="flex items-center gap-1">
               <BookOpen className="w-3.5 h-3.5" />
               {unit.topicsCount ?? unit.topics} topics
             </span>
             <span className="flex items-center gap-1">
               <BarChart2 className="w-3.5 h-3.5" />
-              {unit.questionCount} questions
+              {unit.questionCount} Qs
             </span>
-            <span className="flex items-center gap-1">
+            <span className="flex items-center gap-1 mr-1">
               <Clock className="w-3.5 h-3.5" />
               ~{unit.estimatedHours}h
             </span>
             <Badge
               variant="outline"
-              className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${difficultyVariant[unit.difficulty] || ''}`}
+              className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${difficultyVariant[unit.difficulty] || ''}`}
             >
               {unit.difficulty}
             </Badge>
           </div>
 
-          {/* Progress */}
-          <div className="space-y-1">
-            <div className="flex justify-between items-center text-xs font-medium text-muted-foreground">
-              <span>Completed</span>
-              <span className="font-mono">{pct}%</span>
+          {/* Progress Tracker */}
+          <div className="space-y-1.5 mb-6">
+            <div className="flex justify-between items-center text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              <span>Progress</span>
+              <span className="font-mono text-primary text-sm">{pct}%</span>
             </div>
-            <div className="w-full h-1.5 bg-muted rounded-full overflow-hidden">
+            <div className="w-full h-2 bg-secondary rounded-full overflow-hidden">
               <div
                 className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
                 style={{ width: `${pct}%` }}
               />
             </div>
           </div>
-        </CardContent>
 
-        <CardFooter className="px-6 py-3 bg-muted/30 border-t border-border/50">
+          {/* Action Button */}
           <Button
             asChild
-            variant="ghost"
-            size="sm"
-            className="w-full justify-between text-muted-foreground hover:text-primary hover:bg-primary/5 group/btn px-0"
+            variant="outline"
+            className="w-full mt-auto py-2.5 bg-secondary text-primary hover:bg-primary hover:text-primary-foreground font-bold rounded-2xl border border-primary/10 transition-all text-xs flex items-center justify-center gap-1.5 h-10 cursor-pointer"
           >
             <Link to={`/unit/${unit.slug || unit.id}`}>
-              <span className="text-sm font-medium">Open Unit</span>
-              <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform duration-150" />
+              {pct > 0 ? 'Continue Unit' : 'Start Unit'}
+              <ChevronRight className="w-4 h-4 ml-0.5" />
             </Link>
           </Button>
-        </CardFooter>
+        </CardContent>
       </Card>
     </motion.div>
   );
