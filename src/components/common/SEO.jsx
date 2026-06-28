@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'JavaLab';
 const SITE_URL = 'https://javalab.app';
-const OG_IMAGE = '/Javalab-whatsapp-og.png';
+const OG_IMAGE = `${SITE_URL}/Javalab-whatsapp-og.png`;
 
 export const SEO = ({
   title,
@@ -23,6 +23,11 @@ export const SEO = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:secure_url" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:alt" content={fullTitle} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:url" content={SITE_URL} />
 
