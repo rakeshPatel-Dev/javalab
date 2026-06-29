@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MessageQuote, ExternalLink } from 'lucide-react';
+import { MessageSquareQuote, ExternalLink } from 'lucide-react';
 
 const testimonials = [
   {
@@ -58,7 +58,7 @@ export default function Testimonials() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-12 text-center">
           <div className="inline-flex items-center gap-2 mb-4 bg-primary/10 border border-primary/20 text-primary px-3 py-1 rounded-full">
-            <MessageQuote className="w-3 h-3" />
+            <MessageSquareQuote className="w-3 h-3" />
             <span className="text-xs font-bold uppercase tracking-[0.15em]">Student Voices</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-foreground tracking-tight">
