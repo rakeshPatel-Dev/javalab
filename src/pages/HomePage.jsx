@@ -9,6 +9,7 @@ import StatsGrid from '../components/sections/home/StatsGrid';
 import FeaturedUnits from '../components/sections/home/FeaturedUnits';
 import CTABento from '../components/sections/home/CTABento';
 import Features from '../components/sections/home/Features';
+import Testimonials from '../components/sections/home/Testimonials';
 
 export default function HomePage() {
   const units = useMemo(() => getUnits(), []);
@@ -35,7 +36,10 @@ export default function HomePage() {
       {/* 6. Features — premium features section */}
       <Features />
 
-       {/* 5. CTA Bento — dark wide panel + blue community panel (from design) */}
+       {/* 5. Testimonials — student voices */}
+      <Testimonials />
+
+      {/* 6. CTA Bento — dark wide panel + blue community panel (from design) */}
       <CTABento />
 
     </div>
