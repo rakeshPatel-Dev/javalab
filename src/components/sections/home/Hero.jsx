@@ -24,7 +24,7 @@ const float = (delay = 0, distance = 12, duration = 5) => ({
 const DistributionCard = ({ label, value, total, color, ringColor, delay, distance, duration, position, className }) => (
   <motion.div
     {...float(delay, distance, duration)}
-    className={`absolute ${position} z-20 hidden md:flex items-center gap-3 px-4 py-3 rounded-2xl bg-background/55 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] ${className}`}
+    className={`absolute ${position} z-20 hidden lg:flex items-center gap-3 px-4 py-3 rounded-2xl bg-background/55 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.35)] ${className}`}
     style={{ WebkitBackdropFilter: 'blur(16px)' }}
   >
     <div className={`relative w-10 h-10 rounded-full flex items-center justify-center ${color}`}>
